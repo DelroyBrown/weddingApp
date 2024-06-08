@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>Create RSVP</h1>
+<form method="post" id="rsvp-form">
+    {% csrf_token %}
+    <!-- Render RSVP form fields manually with plain HTML inputs -->
+    <div class="form-group">
+        <label for="id_family_name">Family Name</label>
+        <input type="text" name="family_name" id="id_family_name" value="{{ form.family_name.value|default_if_none:'' }}" />
+        {% if form.family_name.errors %}
+            <div class="error">{{ form.family_name.errors }}</div>
+        {% endif %}
+    </div>
+    <div class="form-group">
+        <label for="id_email">Email</label>
+        <input type="email" name="email" id="id_email" value="{{ form.email.value|default_if_none:'' }}" />
+        {% if form.email.errors %}
+            <div class="error">{{ form.email.errors }}</div>
+        {% endif %}
+    </div>
+
+    <!-- Render Attendee formset fields manually with plain HTML inputs -->
+    <div id="attendees-formset">
+        {{ formset.management_form }}
+        {% for form in formset %}
+        <div class="attendee-form">
+            <div class="form-group">
+                <label for="id_attendees-{{ forloop.counter0 }}-name">Attendee {{ forloop.counter }} Name</label>
+                <input type="text" name="attendees-{{ forloop.counter0 }}-name" id="id_attendees-{{ forloop.counter0 }}-name" value="{{ form.name.value|default_if_none:'' }}" />
+                {% if form.name.errors %}
+                    <div class="error">{{ form.name.errors }}</div>
+                {% endif %}
+            </div>
+            <div class="form-group">
+                <label for="id_attendees-{{ forloop.counter0 }}-dietary_restrictions">Dietary Restrictions</label>
+                <textarea name="attendees-{{ forloop.counter0 }}-dietary_restrictions" id="id_attendees-{{ forloop.counter0 }}-dietary_restrictions">{{ form.dietary_restrictions.value|default_if_none:'' }}</textarea>
+                {% if form.dietary_restrictions.errors %}
+                    <div class="error">{{ form.dietary_restrictions.errors }}</div>
+                {% endif %}
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+
+    <button type="submit">Submit</button>
+</form>
+{% endblock %}
