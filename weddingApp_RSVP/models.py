@@ -12,6 +12,10 @@ class RSVP(models.Model):
     reason = models.TextField(blank=True, null=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
+    ceremony = models.BooleanField(default=False)
+    after_party = models.BooleanField(default=False)
+    zoom = models.BooleanField(default=False)
+    message = models.TextField(blank=True, null=True)
 
     def __str__(self):
         return f"{self.family_name} - {self.email}"

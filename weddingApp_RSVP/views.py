@@ -41,7 +41,24 @@ def generate_unique_token(family_name):
 def send_rsvp_email(rsvp):
     rsvp_link = f"http://localhost:8000/rsvp/{rsvp.token}/"
     subject = "You're invited to our wedding"
-    message = f"Hello {rsvp.family_name},\n\nYou're invited to our wedding! Please RSVP using the following link: {rsvp_link}\n\nThank you!"
+    message = f"""
+    Hello {rsvp.family_name},
+    
+    You're invited to our wedding! Please RSVP using the following link: {rsvp_link}
+    
+    You are invited to:
+    """
+    if rsvp.ceremony:
+        message += "\n- The Ceremony"
+    if rsvp.after_party:
+        message += "\n- The After-Party"
+    if rsvp.zoom:
+        message += "\n- Join via Zoom"
+
+    if rsvp.message:
+        message += f"\n\nMessage from us:\n{rsvp.message}"
+
+    message += "\n\nThank you!"
     send_mail(subject, message, "your_email@example.com", [rsvp.email])
 
 

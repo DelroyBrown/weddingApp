@@ -10,43 +10,40 @@
                     <div class="divider"></div>
                     <p><em>Make sure to let them know what they're invited to.<br>Would be awkward if a party guest showed up for dinner.</em></p>
                 </div>
-                
             </div>
             <div class="col-md-8 col-md-offset-2 col-xs-12 text-center">
-
                 <form method="post" id="ajaxForm" data-toggle="validator">
                     {% csrf_token %}
                     <div class="row" style="margin-bottom: 50px;">
                         <div class="col-md-4 text-center">
-                            <input type="checkbox" id="checkbox-1" name="events[]" value="Pre-Wedding Dinner">
-                            <label for="checkbox-1" class="checkbox-button">
+                            <input type="checkbox" id="ceremony" name="ceremony" {% if form.ceremony.value %}checked{% endif %}>
+                            <label for="ceremony" class="checkbox-button">
                                 <i class="fa-regular fa-circle fa-xs" aria-hidden="true"></i>
                                 Ceremony
                             </label>
-                            <p>Victory Gardens Hall, 11 Grant Ave. Carteret NJ 9851 (732) 841-45 90, (732) 634-13 86 info@emailname.com</p>
+                            <p>Victory Gardens Hall, 11 Grant Ave. Carteret NJ 9851</p>
                         </div>
                         <div class="col-md-4 text-center">
-                            <input type="checkbox" id="checkbox-2" name="events[]" value="Ceremony">
-                            <label for="checkbox-2" class="checkbox-button">
+                            <input type="checkbox" id="after_party" name="after_party" {% if form.after_party.value %}checked{% endif %}>
+                            <label for="after_party" class="checkbox-button">
                                 <i class="fa-regular fa-circle fa-xs" aria-hidden="true"></i>
                                 After-Party
                             </label>
-                            <p>Victory Gardens Hall, 11 Grant Ave. Carteret NJ 9851 (732) 841-45 90, (732) 634-13 86 info@emailname.com</p>
+                            <p>Victory Gardens Hall, 11 Grant Ave. Carteret NJ 9851</p>
                         </div>
                         <div class="col-md-4 text-center">
-                            <input type="checkbox" id="checkbox-3" name="events[]" value="Party">
-                            <label for="checkbox-3" class="checkbox-button">
+                            <input type="checkbox" id="zoom" name="zoom" {% if form.zoom.value %}checked{% endif %}>
+                            <label for="zoom" class="checkbox-button">
                                 <i class="fa-regular fa-circle fa-xs" aria-hidden="true"></i>
                                 Zoom
                             </label>
-                            <p>Victory Gardens Hall, 11 Grant Ave. Carteret NJ 9851 (732) 841-45 90, (732) 634-13 86 info@emailname.com</p>
+                            <p>Victory Gardens Hall, 11 Grant Ave. Carteret NJ 9851</p>
                         </div>
                     </div>
-
                     <div class="row">
                         <div class="col-md-6">
                             <div class="form-group">
-                                <input class="form-control" placeholder="Person's Name"  type="text" name="family_name" id="id_family_name" value="{{ form.family_name.value|default_if_none:'' }}" />
+                                <input class="form-control" placeholder="Person's Name" type="text" name="family_name" id="id_family_name" value="{{ form.family_name.value|default_if_none:'' }}" />
                                 {% if form.family_name.errors %}
                                     <div class="error">{{ form.family_name.errors }}</div>
                                 {% endif %}
@@ -62,19 +59,27 @@
                         </div>
                     </div>
                     <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <textarea class="form-control" placeholder="Your Message" name="message" id="id_message">{{ form.message.value|default_if_none:'' }}</textarea>
+                                {% if form.message.errors %}
+                                    <div class="error">{{ form.message.errors }}</div>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
                         <h4>Additional Attendees</h4>
                         <div class="col-md-12">
                             {{ formset.management_form }}
                             {% for form in formset %}
                             <div class="form-group">
-                              
                                 <input placeholder="Attendee {{ forloop.counter }} Name" class="form-control" type="text" name="attendees-{{ forloop.counter0 }}-name" id="id_attendees-{{ forloop.counter0 }}-name" value="{{ form.name.value|default_if_none:'' }}" />
                                 {% if form.name.errors %}
                                     <div class="error">{{ form.name.errors }}</div>
                                 {% endif %}
                             </div>
                             <div class="form-group">
-                        
                                 <textarea placeholder="Dietary Restrictions" class="form-control" name="attendees-{{ forloop.counter0 }}-dietary_restrictions" id="id_attendees-{{ forloop.counter0 }}-dietary_restrictions">{{ form.dietary_restrictions.value|default_if_none:'' }}</textarea>
                                 {% if form.dietary_restrictions.errors %}
                                     <div class="error">{{ form.dietary_restrictions.errors }}</div>
@@ -83,11 +88,9 @@
                             <hr>
                             {% endfor %}
                         </div>
-                        
                     </div>
-                <button type="subit" class="btn btn-primary btn-lg">Send Invite</button>
+                    <button type="submit" class="btn btn-primary btn-lg">Send Invite</button>
                 </form>
-                
             </div>
         </div>
     </div>
