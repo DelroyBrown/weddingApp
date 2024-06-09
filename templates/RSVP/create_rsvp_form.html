@@ -1,6 +1,23 @@
 {% extends 'base.html' %}
 
 {% block content %}
+
+<style>
+    #additional-attendees {
+    height: 0;
+    opacity: 0;
+    overflow: hidden;
+    transition: height 0.5s ease, opacity 0.5s ease;
+}
+
+#additional-attendees.show {
+    height: auto;
+    opacity: 1;
+}
+
+</style>
+
+
 <section id="rsvp">
     <div class="container">
         <div class="row">
@@ -15,7 +32,7 @@
                 <form method="post" id="ajaxForm" data-toggle="validator">
                     {% csrf_token %}
                     <div class="row" style="margin-bottom: 50px;">
-                        <div class="col-md-4 text-center">
+                        <div class="col-md-6 text-center">
                             <input type="checkbox" id="ceremony" name="ceremony" {% if form.ceremony.value %}checked{% endif %}>
                             <label for="ceremony" class="checkbox-button">
                                 <i class="fa-regular fa-circle fa-xs" aria-hidden="true"></i>
@@ -23,7 +40,7 @@
                             </label>
                             <p>Victory Gardens Hall, 11 Grant Ave. Carteret NJ 9851</p>
                         </div>
-                        <div class="col-md-4 text-center">
+                        <div class="col-md-6 text-center">
                             <input type="checkbox" id="after_party" name="after_party" {% if form.after_party.value %}checked{% endif %}>
                             <label for="after_party" class="checkbox-button">
                                 <i class="fa-regular fa-circle fa-xs" aria-hidden="true"></i>
@@ -31,14 +48,7 @@
                             </label>
                             <p>Victory Gardens Hall, 11 Grant Ave. Carteret NJ 9851</p>
                         </div>
-                        <div class="col-md-4 text-center">
-                            <input type="checkbox" id="zoom" name="zoom" {% if form.zoom.value %}checked{% endif %}>
-                            <label for="zoom" class="checkbox-button">
-                                <i class="fa-regular fa-circle fa-xs" aria-hidden="true"></i>
-                                Zoom
-                            </label>
-                            <p>Victory Gardens Hall, 11 Grant Ave. Carteret NJ 9851</p>
-                        </div>
+              
                     </div>
                     <div class="row">
                         <div class="col-md-6">
@@ -70,7 +80,8 @@
                     </div>
                     <div class="row">
                         <h4>Additional Attendees</h4>
-                        <div class="col-md-12">
+                        <i id="toggle-attendees" class="fa-solid fa-circle-plus fa-2xl" style="cursor: pointer; margin: 20px 0px;"></i>
+                        <div class="col-md-12 add-attendees-box" id="additional-attendees"> <!-- Toggle Container -->
                             {{ formset.management_form }}
                             {% for form in formset %}
                             <div class="form-group">
@@ -89,10 +100,30 @@
                             {% endfor %}
                         </div>
                     </div>
+                    
                     <button type="submit" class="btn btn-primary btn-lg">Send Invite</button>
                 </form>
             </div>
         </div>
     </div>
 </section>
+
+<script>
+    document.getElementById('toggle-attendees').addEventListener('click', function() {
+        var attendeesBox = document.getElementById('additional-attendees');
+        if (attendeesBox.classList.contains('show')) {
+            attendeesBox.classList.remove('show');
+            this.classList.remove('fa-circle-minus');
+            this.classList.add('fa-circle-plus');
+        } else {
+            attendeesBox.classList.add('show');
+            this.classList.remove('fa-circle-plus');
+            this.classList.add('fa-circle-minus');
+        }
+    });
+</script>
+
+
+
+
 {% endblock %}

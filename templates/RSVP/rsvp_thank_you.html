@@ -1,7 +1,28 @@
 {% extends 'base.html' %}
+{% load static %}
 
 
 {% block content %}
-<h1>Thank You for Your RSVP!</h1>
-<p>We look forward to celebrating with you.</p>
+<link rel="stylesheet" href="{% static 'RSVP/css/thank-you.css' %}">
+
+<div class="thankyou-page">
+    <div class="_header">
+        <div class="logo">
+            <img src="https://codexcourier.com/images/banner-logo.png" alt="">
+        </div>
+        <h1>Invite Sent!</h1>
+    </div>
+    <div class="_body">
+        <div class="text-center _box">
+            <h2>
+                When the person RSVPs we'll both get an email letting us know if their attending or not.
+            </h2>
+        </div>
+    </div>
+    <div class="_footer">
+        <a class="btn" href="{% url 'weddingApp_RSVP:create_rsvp' %}">Invite Someone Else?</a>
+    </div>
+</div>
 {% endblock %}
+
+
