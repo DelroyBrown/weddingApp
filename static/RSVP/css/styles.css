@@ -19,7 +19,7 @@
 	1. General Styles
 ================================================================== */
 body {
-    color: #7b7571;
+    color: #000;
     font-family: 'Open Sans', sans-serif;
     font-weight: 300;
 }
@@ -908,7 +908,7 @@ a.mfp-image:hover {
 ================================================================== */
 #ajaxForm input,
 #ajaxForm textarea {
-    border: 1px solid #B6B7B7;
+    border: 1px solid #000;
     color: #363B3F;
     background: transparent none repeat scroll 0% 0%;
     padding: 15px 30px;
@@ -942,6 +942,15 @@ a.mfp-image:hover {
     cursor: pointer;
     font-weight: normal;
 }
+
+::placeholder {
+    color: #000 !important;
+    opacity: 1
+  }
+  
+  ::-ms-input-placeholder {
+    color: #000 !important;
+  }
 
 #ajaxForm label.checkbox-button:hover {
     color: #BE6731;

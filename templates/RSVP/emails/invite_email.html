@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>You're Invited to Our Wedding</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        .container {
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .header {
+            text-align: center;
+        }
+
+        .content {
+            margin-top: 20px;
+        }
+
+        .footer {
+            margin-top: 20px;
+            text-align: center;
+            color: #888;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>{{ subject }}</h1>
+        </div>
+        <div class="content">
+            <p>Hello {{ family_name }},</p>
+            <p>{{ invitation_message }}</p>
+            <p>{{ event_location_message  }}</p>
+            <p><a href="{{ rsvp_link }}">{{ rsvp_link }}</a></p>
+            <hr>
+            {% if message %}
+            <p>Message from us:</p>
+            <blockquote>{{ message }}</blockquote>
+            {% endif %}
+            <p>Thank you!</p>
+        </div>
+        <div class="footer">
+            <p>With love,</p>
+            <p>[Your Names]</p>
+        </div>
+    </div>
+</body>
+
+</html>

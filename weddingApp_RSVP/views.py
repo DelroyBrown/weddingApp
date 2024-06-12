@@ -1,7 +1,10 @@
 # weddingApp_RSVP/views.py
 import random
 import string
-from django.core.mail import send_mail
+from django.conf import settings
+from django.core.mail import EmailMultiAlternatives
+from django.template.loader import render_to_string
+from django.utils.html import strip_tags
 from django.shortcuts import render, get_object_or_404, redirect
 from .models import RSVP, Attendee
 from .forms import RSVPForm, RSVPCreateForm, AttendeeFormSet
@@ -41,25 +44,40 @@ def generate_unique_token(family_name):
 def send_rsvp_email(rsvp):
     rsvp_link = f"http://localhost:8000/rsvp/{rsvp.token}/"
     subject = "You're invited to our wedding"
-    message = f"""
-    Hello {rsvp.family_name},
-    
-    You're invited to our wedding! Please RSVP using the following link: {rsvp_link}
-    
-    You are invited to:
-    """
-    if rsvp.ceremony:
-        message += "\n- The Ceremony"
-    if rsvp.after_party:
-        message += "\n- The After-Party"
-    if rsvp.zoom:
-        message += "\n- Join via Zoom"
 
-    if rsvp.message:
-        message += f"\n\nMessage from us:\n{rsvp.message}"
+    if rsvp.ceremony and rsvp.after_party:
+        invitation_message = "You're invited to our wedding ceremony and after party! Please RSVP using the following link:"
+        event_location_message = "Everything will be held at: Crowne Plaza, Oxford Road, Beaconsfield, Gerrards Cross, HP9 2XE on June 7th 2025"
+    elif rsvp.ceremony:
+        invitation_message = "You're invited to the ceremony of our wedding! Please RSVP using the following link:"
+        event_location_message = "The ceremony will be held at: Crowne Plaza, Oxford Road, Beaconsfield, Gerrards Cross, HP9 2XE on June 7th 2025"
+    elif rsvp.after_party:
+        invitation_message = "You're invited to our wedding after party! Please RSVP using the following link:"
+        event_location_message = "The after party will be held at: Crowne Plaza, Oxford Road, Beaconsfield, Gerrards Cross, HP9 2XE on June 7th 2025"
+    else:
+        invitation_message = (
+            "You're invited to our wedding! Please RSVP using the following link:"
+        )
+        event_location_message = ""
 
-    message += "\n\nThank you!"
-    send_mail(subject, message, "your_email@example.com", [rsvp.email])
+    html_content = render_to_string(
+        "RSVP/emails/invite_email.html",
+        {
+            "family_name": rsvp.family_name,
+            "rsvp_link": rsvp_link,
+            "invitation_message": invitation_message,
+            "event_location_message": event_location_message,
+            "message": rsvp.message,
+            "subject": subject,
+        },
+    )
+    text_content = strip_tags(html_content)
+
+    email = EmailMultiAlternatives(
+        subject, text_content, "delroybrown.db@gmail.com", [rsvp.email]
+    )
+    email.attach_alternative(html_content, "text/html")
+    email.send()
 
 
 def rsvp_view(request, token):
@@ -72,12 +90,40 @@ def rsvp_view(request, token):
         if form.is_valid() and formset.is_valid():
             rsvp = form.save()
             formset.save()
-            return render(request, "RSVP/rsvp_thank_you.html")
+            send_rsvp_notification_email(rsvp)
+            return render(request, "RSVP/rsvp_response.html")
     else:
         form = RSVPForm(instance=rsvp)
         formset = AttendeeFormSet(instance=rsvp)
 
     return render(request, "RSVP/rsvp_form.html", {"form": form, "formset": formset})
+
+
+def send_rsvp_notification_email(rsvp):
+    subject = "New RSVP Submission: {} {}".format(rsvp.family_name, rsvp.email)
+    from_email = settings.EMAIL_HOST_USER
+    to_emails = [
+        settings.EMAIL_HOST_USER,
+        "delroybrown@binaq.co.uk",
+    ]
+
+    if rsvp.response == "yes":
+        response_message = "I'll definitely be there, I can't wait!"
+    else:
+        response_message = "Sorry to miss it, but I won't be able to make it."
+
+    html_content = render_to_string(
+        "RSVP/emails/rsvp_notification_email.html",
+        {
+            "rsvp": rsvp,
+            "response_message": response_message,
+        },
+    )
+    text_content = strip_tags(html_content)
+
+    email = EmailMultiAlternatives(subject, text_content, from_email, to_emails)
+    email.attach_alternative(html_content, "text/html")
+    email.send()
 
 
 def rsvp_thank_you(request):

@@ -15,12 +15,11 @@ class RSVPAdmin(admin.ModelAdmin):
         "response",
         "ceremony",
         "after_party",
-        "zoom",
         "created_at",
         "updated_at",
     )
     search_fields = ("family_name", "email")
-    list_filter = ("response", "created_at", "after_party", "ceremony", "zoom")
+    list_filter = ("response", "created_at", "after_party", "ceremony",)
     inlines = [AttendeeInline]
 
 

@@ -1,0 +1,31 @@
+
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>RSVP Response</h1>
+<form method="post">
+    {% csrf_token %}
+    <!-- RSVPForm fields -->
+    <label for="response">Will you be attending?</label>
+    <select id="response" name="response">
+        <option value="yes" {% if form.response.value == "yes" %}selected{% endif %}>Yes</option>
+        <option value="no" {% if form.response.value == "no" %}selected{% endif %}>No</option>
+    </select>
+
+    <label for="reason">Reason (if not attending):</label>
+    <textarea id="reason" name="reason">{{ form.reason.value|default:'' }}</textarea>
+
+    <!-- AttendeeFormSet fields -->
+    {{ formset.management_form }}
+    {% for form in formset %}
+        <h2>Attendee {{ forloop.counter }}</h2>
+        <label for="name">Name:</label>
+        <input type="text" id="name_{{ forloop.counter0 }}" name="name_{{ forloop.counter0 }}" value="{{ form.name.value|default:'' }}">
+
+        <label for="dietary_restrictions">Dietary Restrictions:</label>
+        <input type="text" id="dietary_restrictions_{{ forloop.counter0 }}" name="dietary_restrictions_{{ forloop.counter0 }}" value="{{ form.dietary_restrictions.value|default:'' }}">
+    {% endfor %}
+
+    <button type="submit">Submit</button>
+</form>
+{% endblock %}

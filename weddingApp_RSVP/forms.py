@@ -7,7 +7,7 @@ from django.forms import inlineformset_factory
 class RSVPCreateForm(forms.ModelForm):
     class Meta:
         model = RSVP
-        fields = ["family_name", "email", "ceremony", "after_party", "zoom", "message"]
+        fields = ["family_name", "email", "ceremony", "after_party", "message"]
 
 
 class AttendeeForm(forms.ModelForm):

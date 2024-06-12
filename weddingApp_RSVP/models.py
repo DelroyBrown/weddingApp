@@ -14,7 +14,6 @@ class RSVP(models.Model):
     updated_at = models.DateTimeField(auto_now=True)
     ceremony = models.BooleanField(default=False)
     after_party = models.BooleanField(default=False)
-    zoom = models.BooleanField(default=False)
     message = models.TextField(blank=True, null=True)
 
     def __str__(self):
