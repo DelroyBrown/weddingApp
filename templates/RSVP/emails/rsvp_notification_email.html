@@ -4,9 +4,9 @@
 
 <p>{{ response_message }}</p>
 
-{% if rsvp.attendees.all %}
+{% if attendees %}
 {% if rsvp.response == "yes" %}
-{% for attendee in rsvp.attendees.all %}
+{% for attendee in attendees %}
 <p>I'll be bringing {{ attendee.name }}{% if attendee.dietary_restrictions %}, their dietary restrictions are 
     {{ attendee.dietary_restrictions }}{% endif %}.</p>
 {% endfor %}

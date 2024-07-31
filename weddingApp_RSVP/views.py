@@ -60,6 +60,8 @@ def send_rsvp_email(rsvp):
         )
         event_location_message = ""
 
+    attendees = rsvp.attendees.all()
+
     html_content = render_to_string(
         "RSVP/emails/invite_email.html",
         {
@@ -68,6 +70,7 @@ def send_rsvp_email(rsvp):
             "invitation_message": invitation_message,
             "event_location_message": event_location_message,
             "message": rsvp.message,
+            "attendees": attendees,
             "subject": subject,
         },
     )
@@ -91,7 +94,12 @@ def rsvp_view(request, token):
             rsvp = form.save()
             formset.save()
             send_rsvp_notification_email(rsvp)
-            return render(request, "RSVP/rsvp_response.html")
+            return redirect("weddingApp_RSVP:rsvp_thank_you")
+        else:
+            print("RSVP Form Errors:", form.errors)
+            print("Formset Errors:", formset.errors)
+            for f in formset:
+                print(f.errors)
     else:
         form = RSVPForm(instance=rsvp)
         formset = AttendeeFormSet(instance=rsvp)
@@ -105,6 +113,7 @@ def send_rsvp_notification_email(rsvp):
     to_emails = [
         settings.EMAIL_HOST_USER,
         "delroybrown@binaq.co.uk",
+        "karissaprince@yahoo.co.uk",
     ]
 
     if rsvp.response == "yes":
@@ -112,11 +121,14 @@ def send_rsvp_notification_email(rsvp):
     else:
         response_message = "Sorry to miss it, but I won't be able to make it."
 
+    attendees = rsvp.attendees.all()
+
     html_content = render_to_string(
         "RSVP/emails/rsvp_notification_email.html",
         {
             "rsvp": rsvp,
             "response_message": response_message,
+            "attendees": attendees,
         },
     )
     text_content = strip_tags(html_content)

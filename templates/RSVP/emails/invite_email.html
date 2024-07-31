@@ -50,9 +50,14 @@
             {% endif %}
             <p>Thank you!</p>
         </div>
+        <ul>
+            {% for attendee in attendees %}
+                <li>{{ attendee.name }}{% if attendee.dietary_restrictions %} (Dietary Restrictions: {{ attendee.dietary_restrictions }}){% endif %}</li>
+            {% endfor %}
+        </ul>
         <div class="footer">
             <p>With love,</p>
-            <p>[Your Names]</p>
+            <p>Karissa & Del.</p>
         </div>
     </div>
 </body>

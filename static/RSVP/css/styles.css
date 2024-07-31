@@ -41,7 +41,7 @@ h3 span,
 h4 span,
 h5 span,
 h6 span {
-    color: #BE6731;
+    color: #9EB195;
 }
 
 .title-block {
@@ -50,7 +50,7 @@ h6 span {
 }
 
 .title-block .divider {
-    border-bottom: solid 2px #BE6731;
+    border-bottom: solid 2px #9EB195;
     width: 50px;
     margin: 20px auto;
 }
@@ -81,7 +81,7 @@ h6 span {
 }
 
 .bg-color-1 {
-    background-color: #BE6731;
+    background-color: #9EB195;
 }
 
 .txt-gray-1 {
@@ -101,7 +101,7 @@ h6 span {
 }
 
 .txt-color-1 {
-    color: #BE6731;
+    color: #9EB195;
 }
 
 /* Layout */
@@ -268,8 +268,8 @@ h6 span {
 .btn-primary.btn-bordered:active,
 .btn-primary.btn-bordered:active:focus,
 .btn-primary.btn-bordered.active {
-    background: #BE6731;
-    border: solid 2px #BE6731;
+    background: #9EB195;
+    border: solid 2px #9EB195;
     color: #fff;
 }
 
@@ -280,8 +280,8 @@ h6 span {
 .btn-primary.active,
 .btn-primary.btn-bordered {
     background: none;
-    border: solid 2px #BE6731;
-    color: #BE6731;
+    border: solid 2px #9EB195;
+    color: #9EB195;
 }
 
 .img-circle {
@@ -364,7 +364,7 @@ section.img-bg-5 {
 .navbar-default .navbar-nav>.active>a,
 .navbar-default .navbar-nav>.active>a:focus,
 .navbar-default .navbar-nav>.active>a:hover {
-    color: #BE6731;
+    color: #9EB195;
     background: none;
 }
 
@@ -399,7 +399,7 @@ ul.names li {
 }
 
 .circle {
-    background: #BE6731;
+    background: #9EB195;
     width: 100px;
     height: 100px;
     text-align: center;
@@ -419,7 +419,7 @@ ul.names li {
 
 .date span {
     font-size: 80px;
-    border-bottom: solid 2px #BE6731;
+    border-bottom: solid 2px #9EB195;
     line-height: 1em;
 }
 
@@ -533,8 +533,8 @@ ul.names li {
 }
 
 .social-icons a:hover {
-    border: 4px solid #BE6731;
-    background: #BE6731;
+    border: 4px solid #9EB195;
+    background: #9EB195;
 }
 
 /* ==================================================================
@@ -546,7 +546,7 @@ section#frase h2 {
 }
 
 section#frase i {
-    color: #BE6731;
+    color: #9EB195;
 }
 
 /* ==================================================================
@@ -640,7 +640,7 @@ section#frase i {
     top: 16px;
     left: 50%;
     margin-left: -25px;
-    background-color: #BE6731;
+    background-color: #9EB195;
     z-index: 100;
     border-top-right-radius: 50%;
     border-top-left-radius: 50%;
@@ -665,7 +665,7 @@ section#frase i {
     top: 16px;
     left: 50%;
     margin-left: -25px;
-    background-color: #BE6731;
+    background-color: #9EB195;
     z-index: 100;
     border-top-right-radius: 50%;
     border-top-left-radius: 50%;
@@ -767,7 +767,7 @@ section#frase i {
 }
 
 .final-frase span {
-    color: #BE6731;
+    color: #9EB195;
     font-weight: bold;
 }
 
@@ -900,7 +900,7 @@ a.mfp-image:hover {
 
 .owl-theme .owl-controls .owl-page.active span,
 .owl-theme .owl-controls.clickable .owl-page:hover span {
-    background: #BE6731;
+    background: #9EB195;
 }
 
 /* ==================================================================
@@ -919,7 +919,7 @@ a.mfp-image:hover {
 }
 
 #ajaxForm .form-control:focus {
-    border-color: #BE6731;
+    border-color: #9EB195;
     outline: 0px none;
     box-shadow: none;
 }
@@ -953,11 +953,11 @@ a.mfp-image:hover {
   }
 
 #ajaxForm label.checkbox-button:hover {
-    color: #BE6731;
+    color: #9EB195;
 }
 
 #ajaxForm input[type="checkbox"]:checked+label.checkbox-button {
-    color: #BE6731;
+    color: #9EB195;
 }
 
 input[type="checkbox"]:checked+label.checkbox-button i.fa::before {
