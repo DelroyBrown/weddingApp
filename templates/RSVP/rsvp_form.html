@@ -1,5 +1,5 @@
 <!-- templates/RSVP/rsvp_form.html -->
-{% extends 'base.html' %}
+{% extends 'backend_base.html' %}
 
 {% block content %}
 <style>
@@ -33,12 +33,20 @@
                     <div class="row">
                         <div class="col-md-12">
                             <div class="form-group">
-                                <label for="response">Will you be attending?</label>
-                                {{ form.response }}
+                                <label class="form-label" for="response">Will you be attending?</label>
+                                <select class="form-control" name="response" id="id_response">
+                                    <option value="" selected="">---------</option>
+
+                                    <option value="yes">Yes</option>
+
+                                    <option value="no">No</option>
+
+                                </select>
                             </div>
                             <div class="form-group">
-                                <label for="reason">Reason (if not attending):</label>
-                                {{ form.reason }}
+                                <labe class="form-label" for="reason">
+                                    Reason (if not attending):</label>
+                                <textarea class="form-control" name="reason" cols="40" rows="10" id="id_reason"></textarea>
                             </div>
                         </div>
                     </div>
@@ -48,16 +56,68 @@
                         <i id="toggle-attendees" class="fa-solid fa-circle-plus fa-2xl"
                             style="cursor: pointer; margin: 20px 0px;"></i>
                         <div class="col-md-12 add-attendees-box" id="additional-attendees">
-                            {{ formset.management_form }}
-                            {% for form in formset %}
+                            <input type="hidden" name="attendees-TOTAL_FORMS" value="6"
+                                id="id_attendees-TOTAL_FORMS"><input type="hidden" name="attendees-INITIAL_FORMS"
+                                value="1" id="id_attendees-INITIAL_FORMS"><input type="hidden"
+                                name="attendees-MIN_NUM_FORMS" value="0" id="id_attendees-MIN_NUM_FORMS"><input
+                                type="hidden" name="attendees-MAX_NUM_FORMS" value="1000"
+                                id="id_attendees-MAX_NUM_FORMS">
+
                             <div class="form-group">
-                                <h3>Attendee {{ forloop.counter }}</h3>
-                                {{ form.id }}
-                                {{ form.name }}
-                                {{ form.dietary_restrictions }}
+                                <h3>Attendee 1</h3>
+                                <input type="hidden" name="attendees-0-id" value="62" id="id_attendees-0-id">
+                                <input type="text" name="attendees-0-name" value="Karissa" maxlength="100"
+                                    id="id_attendees-0-name">
+                                <textarea name="attendees-0-dietary_restrictions" cols="40" rows="10"
+                                    id="id_attendees-0-dietary_restrictions">Fish</textarea>
                             </div>
                             <hr>
-                            {% endfor %}
+
+                            <div class="form-group">
+                                <h3>Attendee 2</h3>
+                                <input type="hidden" name="attendees-1-id" id="id_attendees-1-id">
+                                <input type="text" name="attendees-1-name" maxlength="100" id="id_attendees-1-name">
+                                <textarea name="attendees-1-dietary_restrictions" cols="40" rows="10"
+                                    id="id_attendees-1-dietary_restrictions"></textarea>
+                            </div>
+                            <hr>
+
+                            <div class="form-group">
+                                <h3>Attendee 3</h3>
+                                <input type="hidden" name="attendees-2-id" id="id_attendees-2-id">
+                                <input type="text" name="attendees-2-name" maxlength="100" id="id_attendees-2-name">
+                                <textarea name="attendees-2-dietary_restrictions" cols="40" rows="10"
+                                    id="id_attendees-2-dietary_restrictions"></textarea>
+                            </div>
+                            <hr>
+
+                            <div class="form-group">
+                                <h3>Attendee 4</h3>
+                                <input type="hidden" name="attendees-3-id" id="id_attendees-3-id">
+                                <input type="text" name="attendees-3-name" maxlength="100" id="id_attendees-3-name">
+                                <textarea name="attendees-3-dietary_restrictions" cols="40" rows="10"
+                                    id="id_attendees-3-dietary_restrictions"></textarea>
+                            </div>
+                            <hr>
+
+                            <div class="form-group">
+                                <h3>Attendee 5</h3>
+                                <input type="hidden" name="attendees-4-id" id="id_attendees-4-id">
+                                <input type="text" name="attendees-4-name" maxlength="100" id="id_attendees-4-name">
+                                <textarea name="attendees-4-dietary_restrictions" cols="40" rows="10"
+                                    id="id_attendees-4-dietary_restrictions"></textarea>
+                            </div>
+                            <hr>
+
+                            <div class="form-group">
+                                <h3>Attendee 6</h3>
+                                <input type="hidden" name="attendees-5-id" id="id_attendees-5-id">
+                                <input type="text" name="attendees-5-name" maxlength="100" id="id_attendees-5-name">
+                                <textarea name="attendees-5-dietary_restrictions" cols="40" rows="10"
+                                    id="id_attendees-5-dietary_restrictions"></textarea>
+                            </div>
+                            <hr>
+
                         </div>
                     </div>
 

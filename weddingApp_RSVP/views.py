@@ -112,7 +112,7 @@ def send_rsvp_notification_email(rsvp):
     from_email = settings.EMAIL_HOST_USER
     to_emails = [
         settings.EMAIL_HOST_USER,
-        "delroybrown@binaq.co.uk",
+        "delroybrown.db@gmail.com",
         "karissaprince@yahoo.co.uk",
     ]
 
@@ -139,4 +139,4 @@ def send_rsvp_notification_email(rsvp):
 
 
 def rsvp_thank_you(request):
-    return render(request, "RSVP/rsvp_thank_you.html")
+    return render(request, "RSVP/rsvp_response.html")

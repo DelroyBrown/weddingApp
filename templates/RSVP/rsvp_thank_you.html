@@ -1,4 +1,4 @@
-{% extends 'base.html' %}
+{% extends 'backend_base.html' %}
 {% load static %}
 
 
@@ -14,7 +14,8 @@
                     <div class="divider"></div>
                     <p>When they respond, we should both get an email with their <em>yay </em> or <em>nay</em></p>
                 </div>
-                <a class="btn btn-primary btn-lg" href="{% url 'weddingApp_RSVP:create_rsvp' %}">
+                <a class="btn btn-primary btn-lg"
+                href="{% url 'weddingApp_RSVP:create_rsvp' %}">
                     Invite Someone Else?
                 </a>
             </div>
