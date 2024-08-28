@@ -6,11 +6,15 @@
 
 {% if attendees %}
 {% if rsvp.response == "yes" %}
-{% for attendee in attendees %}
-<p>I'll be bringing {{ attendee.name }}{% if attendee.dietary_restrictions %}, their dietary restrictions are 
-    {{ attendee.dietary_restrictions }}{% endif %}.</p>
-{% endfor %}
-{% endif %}
-{% endif %}
+<p>Here's a heads up on the attendees you assigned to me:<br>
+    {% for attendee in attendees %}
+    {{ attendee.name }}
+    {% if attendee.dietary_restrictions %} -  
+    {{ attendee.dietary_restrictions }}<br>
+    {% endif %}
+    {% endfor %}
+</p>
+    {% endif %}
+    {% endif %}
 
 <p>Thank you for your RSVP!</p>

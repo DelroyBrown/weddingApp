@@ -18,8 +18,12 @@ def create_rsvp_view(request):
             rsvp = form.save(commit=False)
             rsvp.token = generate_unique_token(rsvp.family_name)
             rsvp.save()
+
+            # Save attendees without dietary info (this will be handled during RSVP)
             formset.instance = rsvp
             formset.save()
+
+            # Send the email invite
             send_rsvp_email(rsvp)
             return render(request, "RSVP/rsvp_thank_you.html")
         else:
@@ -88,18 +92,19 @@ def rsvp_view(request, token):
 
     if request.method == "POST":
         form = RSVPForm(request.POST, instance=rsvp)
-        formset = AttendeeFormSet(request.POST, instance=rsvp)
+        formset = AttendeeFormSet(
+            request.POST, instance=rsvp
+        )  # Ensure instance is passed here
 
         if form.is_valid() and formset.is_valid():
             rsvp = form.save()
             formset.save()
+
             send_rsvp_notification_email(rsvp)
             return redirect("weddingApp_RSVP:rsvp_thank_you")
         else:
             print("RSVP Form Errors:", form.errors)
             print("Formset Errors:", formset.errors)
-            for f in formset:
-                print(f.errors)
     else:
         form = RSVPForm(instance=rsvp)
         formset = AttendeeFormSet(instance=rsvp)
