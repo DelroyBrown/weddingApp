@@ -29,16 +29,24 @@
             <div class="col-md-8 col-md-offset-2 col-xs-12 text-center">
                 <form method="post" id="rsvpForm" data-toggle="validator">
                     {% csrf_token %}
+
                     <!-- RSVP Response Selection -->
                     <div class="row">
                         <div class="col-md-12">
                             <div class="form-group">
-                                <label class="form-label" for="response">Will you be attending?</label>
-                                {{ form.response }}
+                                <label class="form-label" for="id_response">Will you be attending?</label>
+                                <select name="response" id="id_response" class="form-control">
+                                    <option value="">---------</option>
+                                    <option value="yes" {% if form.response.value == "yes" %}selected{% endif %}>Yes
+                                    </option>
+                                    <option value="no" {% if form.response.value == "no" %}selected{% endif %}>No</option>
+                                </select>
                             </div>
+
                             <div class="form-group">
-                                <label class="form-label" for="reason">Reason (if not attending):</label>
-                                {{ form.reason }}
+                                <label class="form-label" for="id_reason">Reason (if not attending):</label>
+                                <textarea name="reason" id="id_reason" class="form-control"
+                                    rows="5">{{ form.reason.value }}</textarea>
                             </div>
                         </div>
                     </div>
@@ -53,15 +61,19 @@
                             <div class="form-group">
                                 <h3>Attendee {{ forloop.counter }}</h3>
 
-                                <!-- Hidden ID field -->
-                                {{ attendee_form.id }}
+                                <input type="hidden" name="attendees-{{ forloop.counter0 }}-id"
+                                    value="{{ attendee_form.id.value }}">
 
                                 <label for="id_attendees-{{ forloop.counter0 }}-name">Name:</label>
-                                {{ attendee_form.name }}
+                                <input type="text" name="attendees-{{ forloop.counter0 }}-name"
+                                    id="id_attendees-{{ forloop.counter0 }}-name" class="form-control"
+                                    value="{{ attendee_form.name.value }}">
 
                                 <label for="id_attendees-{{ forloop.counter0 }}-dietary_restrictions">Dietary
                                     Restrictions:</label>
-                                {{ attendee_form.dietary_restrictions }}
+                                <textarea name="attendees-{{ forloop.counter0 }}-dietary_restrictions"
+                                    id="id_attendees-{{ forloop.counter0 }}-dietary_restrictions" class="form-control"
+                                    rows="2">{{ attendee_form.dietary_restrictions.value }}</textarea>
                             </div>
                             <hr>
                             {% endfor %}

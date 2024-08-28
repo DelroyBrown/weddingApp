@@ -3,11 +3,12 @@ import random
 import string
 from django.conf import settings
 from django.core.mail import EmailMultiAlternatives
+from django.forms import modelformset_factory, inlineformset_factory
 from django.template.loader import render_to_string
 from django.utils.html import strip_tags
 from django.shortcuts import render, get_object_or_404, redirect
 from .models import RSVP, Attendee
-from .forms import RSVPForm, RSVPCreateForm, AttendeeFormSet
+from .forms import RSVPForm, RSVPCreateForm, AttendeeFormSet, AttendeeForm
 
 
 def create_rsvp_view(request):
@@ -87,14 +88,22 @@ def send_rsvp_email(rsvp):
     email.send()
 
 
+
+
 def rsvp_view(request, token):
     rsvp = get_object_or_404(RSVP, token=token)
 
+    # Get the number of existing attendees
+    existing_attendees_count = rsvp.attendees.count()
+
+    # Create the formset with no extra forms (only show existing attendees)
+    AttendeeFormSetLimited = inlineformset_factory(
+        RSVP, Attendee, form=AttendeeForm, extra=0, can_delete=False
+    )
+
     if request.method == "POST":
         form = RSVPForm(request.POST, instance=rsvp)
-        formset = AttendeeFormSet(
-            request.POST, instance=rsvp
-        )  # Ensure instance is passed here
+        formset = AttendeeFormSetLimited(request.POST, instance=rsvp)
 
         if form.is_valid() and formset.is_valid():
             rsvp = form.save()
@@ -107,7 +116,8 @@ def rsvp_view(request, token):
             print("Formset Errors:", formset.errors)
     else:
         form = RSVPForm(instance=rsvp)
-        formset = AttendeeFormSet(instance=rsvp)
+        # Render only the existing attendee forms
+        formset = AttendeeFormSetLimited(instance=rsvp)
 
     return render(request, "RSVP/rsvp_form.html", {"form": form, "formset": formset})
 

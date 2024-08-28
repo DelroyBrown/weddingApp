@@ -9,12 +9,12 @@
 <p>Here's a heads up on the attendees you assigned to me:<br>
     {% for attendee in attendees %}
     {{ attendee.name }}
-    {% if attendee.dietary_restrictions %} -  
+    {% if attendee.dietary_restrictions %} -
     {{ attendee.dietary_restrictions }}<br>
     {% endif %}
     {% endfor %}
 </p>
-    {% endif %}
-    {% endif %}
+{% endif %}
+{% endif %}
 
 <p>Thank you for your RSVP!</p>

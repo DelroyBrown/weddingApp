@@ -54,14 +54,16 @@
             <p>Thank you!</p>
         </div>
         <ul>
-            <h1>Additional Attendees</h1>
             {% for attendee in attendees %}
+            <p>Additional Attendee:</p>
+            {% if attendee %}
             <li>
                 {{ attendee.name }}
                 {% if attendee.dietary_restrictions %}
                 (Dietary Restrictions: {{ attendee.dietary_restrictions }})
                 {% endif %}
             </li>
+            {% endif %}
             {% endfor %}
         </ul>
         <div class="footer">
