@@ -53,7 +53,7 @@
                     <div class="row">
                         <div class="col-md-6">
                             <div class="form-group">
-                                <input class="form-control" placeholder="Person's Name" type="text" name="family_name" id="id_family_name" value="{{ form.family_name.value|default_if_none:'' }}" />
+                                <input class="form-control" placeholder="Main Attendee's Name" type="text" name="family_name" id="id_family_name" value="{{ form.family_name.value|default_if_none:'' }}" />
                                 {% if form.family_name.errors %}
                                     <div class="error">{{ form.family_name.errors }}</div>
                                 {% endif %}
@@ -61,7 +61,7 @@
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
-                                <input class="form-control" placeholder="Email" type="email" name="email" id="id_email" value="delroybrown.db@gmail.com" />
+                                <input class="form-control" placeholder="Main Attendee's Email" type="email" name="email" id="id_email" value="delroybrown.db@gmail.com" />
                                 {% if form.email.errors %}
                                     <div class="error">{{ form.email.errors }}</div>
                                 {% endif %}
@@ -85,17 +85,12 @@
                             {{ formset.management_form }}
                             {% for form in formset %}
                             <div class="form-group">
-                                <input placeholder="Attendee {{ forloop.counter }} Name" class="form-control" type="text" name="attendees-{{ forloop.counter0 }}-name" id="id_attendees-{{ forloop.counter0 }}-name" value="{{ form.name.value|default_if_none:'' }}" />
+                                <input placeholder="Additional Attendee {{ forloop.counter }}" class="form-control" type="text" name="attendees-{{ forloop.counter0 }}-name" id="id_attendees-{{ forloop.counter0 }}-name" value="{{ form.name.value|default_if_none:'' }}" />
                                 {% if form.name.errors %}
                                     <div class="error">{{ form.name.errors }}</div>
                                 {% endif %}
                             </div>
-                            <div class="form-group">
-                                <textarea placeholder="Dietary Restrictions" class="form-control" name="attendees-{{ forloop.counter0 }}-dietary_restrictions" id="id_attendees-{{ forloop.counter0 }}-dietary_restrictions">{{ form.dietary_restrictions.value|default_if_none:'' }}</textarea>
-                                {% if form.dietary_restrictions.errors %}
-                                    <div class="error">{{ form.dietary_restrictions.errors }}</div>
-                                {% endif %}
-                            </div>
+                           
                             <hr>
                             {% endfor %}
                         </div>

@@ -21,6 +21,7 @@ media
 .idea/**/aws.xml
 
 ignore.html
+upper-footer.html
 
 
 # Generated files
