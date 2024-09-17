@@ -4,17 +4,16 @@
 
 <style>
     #additional-attendees {
-    height: 0;
-    opacity: 0;
-    overflow: hidden;
-    transition: height 0.5s ease, opacity 0.5s ease;
-}
+        height: 0;
+        opacity: 0;
+        overflow: hidden;
+        transition: height 0.5s ease, opacity 0.5s ease;
+    }
 
-#additional-attendees.show {
-    height: auto;
-    opacity: 1;
-}
-
+    #additional-attendees.show {
+        height: auto;
+        opacity: 1;
+    }
 </style>
 
 
@@ -25,7 +24,8 @@
                 <div class="title-block">
                     <h1>Who Are You <span><em>Inviting?</em></span></h1>
                     <div class="divider"></div>
-                    <p><em>Make sure to let them know what they're invited to.<br>Would be awkward if a party guest showed up for the ceremony.</em></p>
+                    <p><em>Make sure to let them know what they're invited to.<br>Would be awkward if a party guest
+                            showed up for the ceremony.</em></p>
                 </div>
             </div>
             <div class="col-md-8 col-md-offset-2 col-xs-12 text-center">
@@ -33,7 +33,8 @@
                     {% csrf_token %}
                     <div class="row" style="margin-bottom: 50px;">
                         <div class="col-md-6 text-center">
-                            <input type="checkbox" id="ceremony" name="ceremony" {% if form.ceremony.value %}checked{% endif %}>
+                            <input type="checkbox" id="ceremony" name="ceremony" {% if form.ceremony.value %}checked{%
+                                endif %}>
                             <label for="ceremony" class="checkbox-button">
                                 <i class="fa-regular fa-circle fa-xs" aria-hidden="true"></i>
                                 Ceremony
@@ -41,29 +42,33 @@
                             <p>Crowne Plaza, Oxford Road, Beaconsfield,<br>Gerrards Cross, HP9 2XE</p>
                         </div>
                         <div class="col-md-6 text-center">
-                            <input type="checkbox" id="after_party" name="after_party" {% if form.after_party.value %}checked{% endif %}>
+                            <input type="checkbox" id="after_party" name="after_party" {% if form.after_party.value
+                                %}checked{% endif %}>
                             <label for="after_party" class="checkbox-button">
                                 <i class="fa-regular fa-circle fa-xs" aria-hidden="true"></i>
                                 After-Party
                             </label>
                             <p>Crowne Plaza, Oxford Road, Beaconsfield,<br>Gerrards Cross, HP9 2XE</p>
                         </div>
-              
+
                     </div>
                     <div class="row">
                         <div class="col-md-6">
                             <div class="form-group">
-                                <input class="form-control" placeholder="Main Attendee's Name" type="text" name="family_name" id="id_family_name" value="{{ form.family_name.value|default_if_none:'' }}" />
+                                <input class="form-control" placeholder="Main Attendee's Name" type="text"
+                                    name="family_name" id="id_family_name"
+                                    value="{{ form.family_name.value|default_if_none:'' }}" />
                                 {% if form.family_name.errors %}
-                                    <div class="error">{{ form.family_name.errors }}</div>
+                                <div class="error">{{ form.family_name.errors }}</div>
                                 {% endif %}
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
-                                <input class="form-control" placeholder="Main Attendee's Email" type="email" name="email" id="id_email" value="delroybrown.db@gmail.com" />
+                                <input class="form-control" placeholder="Main Attendee's Email" type="email"
+                                    name="email" id="id_email" value="delroybrown.db@gmail.com" />
                                 {% if form.email.errors %}
-                                    <div class="error">{{ form.email.errors }}</div>
+                                <div class="error">{{ form.email.errors }}</div>
                                 {% endif %}
                             </div>
                         </div>
@@ -71,31 +76,36 @@
                     <div class="row">
                         <div class="col-md-12">
                             <div class="form-group">
-                                <textarea class="form-control" placeholder="Your Message" name="message" id="id_message">{{ form.message.value|default_if_none:'' }}</textarea>
+                                <textarea class="form-control" placeholder="Your Message" name="message"
+                                    id="id_message">{{ form.message.value|default_if_none:'' }}</textarea>
                                 {% if form.message.errors %}
-                                    <div class="error">{{ form.message.errors }}</div>
+                                <div class="error">{{ form.message.errors }}</div>
                                 {% endif %}
                             </div>
                         </div>
                     </div>
                     <div class="row">
                         <h4>Additional Attendees</h4>
-                        <i id="toggle-attendees" class="fa-solid fa-circle-plus fa-2xl" style="cursor: pointer; margin: 20px 0px;"></i>
+                        <i id="toggle-attendees" class="fa-solid fa-circle-plus fa-2xl"
+                            style="cursor: pointer; margin: 20px 0px;"></i>
                         <div class="col-md-12 add-attendees-box" id="additional-attendees"> <!-- Toggle Container -->
                             {{ formset.management_form }}
                             {% for form in formset %}
                             <div class="form-group">
-                                <input placeholder="Additional Attendee {{ forloop.counter }}" class="form-control" type="text" name="attendees-{{ forloop.counter0 }}-name" id="id_attendees-{{ forloop.counter0 }}-name" value="{{ form.name.value|default_if_none:'' }}" />
+                                <input placeholder="Additional Attendee {{ forloop.counter }}" class="form-control"
+                                    type="text" name="attendees-{{ forloop.counter0 }}-name"
+                                    id="id_attendees-{{ forloop.counter0 }}-name"
+                                    value="{{ form.name.value|default_if_none:'' }}" />
                                 {% if form.name.errors %}
-                                    <div class="error">{{ form.name.errors }}</div>
+                                <div class="error">{{ form.name.errors }}</div>
                                 {% endif %}
                             </div>
-                           
+
                             <hr>
                             {% endfor %}
                         </div>
                     </div>
-                    
+
                     <button type="submit" class="btn btn-primary btn-lg">Send Invite</button>
                 </form>
             </div>
@@ -104,7 +114,7 @@
 </section>
 
 <script>
-    document.getElementById('toggle-attendees').addEventListener('click', function() {
+    document.getElementById('toggle-attendees').addEventListener('click', function () {
         var attendeesBox = document.getElementById('additional-attendees');
         if (attendeesBox.classList.contains('show')) {
             attendeesBox.classList.remove('show');

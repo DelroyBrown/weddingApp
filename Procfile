@@ -1,0 +1,1 @@
+web: gunicorn weddingApp_base.wsgi:application
