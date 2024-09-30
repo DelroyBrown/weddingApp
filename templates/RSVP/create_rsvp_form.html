@@ -33,8 +33,8 @@
                     {% csrf_token %}
                     <div class="row" style="margin-bottom: 50px;">
                         <div class="col-md-6 text-center">
-                            <input type="checkbox" id="ceremony" name="ceremony" {% if form.ceremony.value %}checked{%
-                                endif %}>
+                            <input type="checkbox" id="ceremony" name="ceremony"
+                            {% if form.ceremony.value %}checked{% endif %}>
                             <label for="ceremony" class="checkbox-button">
                                 <i class="fa-regular fa-circle fa-xs" aria-hidden="true"></i>
                                 Ceremony
@@ -42,8 +42,8 @@
                             <p>Crowne Plaza, Oxford Road, Beaconsfield,<br>Gerrards Cross, HP9 2XE</p>
                         </div>
                         <div class="col-md-6 text-center">
-                            <input type="checkbox" id="after_party" name="after_party" {% if form.after_party.value
-                                %}checked{% endif %}>
+                            <input type="checkbox" id="after_party" name="after_party"
+                            {% if form.after_party.value %}checked{% endif %}>
                             <label for="after_party" class="checkbox-button">
                                 <i class="fa-regular fa-circle fa-xs" aria-hidden="true"></i>
                                 After-Party
