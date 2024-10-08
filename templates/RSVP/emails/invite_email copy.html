@@ -5,20 +5,23 @@
     <meta charset="UTF-8">
     <title>You're Invited to Our Wedding</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Herr+Von+Muellerhoff&display=swap');
         body {
             font-family: Arial, sans-serif;
-            color: #9EB195;
         }
 
         .container {
             padding: 20px;
+            border: 3px solid #9EB195;
+            border-radius: 25px;
             max-width: 600px;
             margin: 0 auto;
             /* background-color: #9EB195; */
+            text-align: center;
         }
 
-     
+        .header {
+            text-align: center;
+        }
 
         a {
             text-decoration: none;
@@ -27,20 +30,6 @@
 
         .content {
             margin-top: 20px;
-        }
-
-        .persons-name {
-            font-family: "Cormorant", serif;
-
-            font-size: 75px;
-            font-weight: 400;
-        }
-
-        .getting-married-text {
-            font-family: "Cormorant", serif;
-            font-size: 75px;
-            line-height: 75px;
-            margin-top: 0;
         }
 
         /* .content p {
@@ -53,6 +42,7 @@
 
         .footer {
             margin-top: 20px;
+            text-align: center;
             color: #888;
         }
         li {
@@ -64,34 +54,33 @@
 <body>
     <div class="container">
         <div class="header">
-            <h1>{{subject}}</h1>
+            <h1>{{ subject }}</h1>
         </div>
         <div class="content">
-            <h1 class="persons-name"><em>Hello, {{ family_name }}</em></h1>
-            <p class="getting-married-text">Karissa<br>& Delroy<br>Are Getting<br>Married.</p>
-            <p>On Satuday,<br>June 7th. 2025</p>
+            <p>Hello {{ family_name }},</p>
             <p>{{ invitation_message }}</p>
             <p>{{ event_location_message }}</p>
-            <p>Please RSVP using the below link:</p>
             <p>
                 <a href="{{ rsvp_link }}">
-                    <em>RSVP LINK</em>
+                    <em>{{ rsvp_link }}</em>
                 </a>
             </p>
             <p>Thank you!</p>
             <hr>
             {% if message %}
             <p>Message from us:</p>
-            <em>{{ message }}</em>
+            <blockquote><em>{{ message }}</em></blockquote>
             {% endif %}
         </div>
-        <hr>
         <ul>
-            <p>Your crew include:</p>
             {% for attendee in attendees %}
+            <p>Additional Attendee:</p>
             {% if attendee %}
             <li>
-                {{ attendee.name }}<br>
+                {{ attendee.name }}
+                {% if attendee.dietary_restrictions %}
+                (Dietary Restrictions: {{ attendee.dietary_restrictions }})
+                {% endif %}
             </li>
             {% endif %}
             {% endfor %}
