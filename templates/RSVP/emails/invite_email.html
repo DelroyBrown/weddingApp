@@ -74,26 +74,29 @@
             <p>{{ event_location_message }}</p>
             <p>Please RSVP using the below link:</p>
             <p>
-                <a href="{{ rsvp_link }}">
-                    <em>RSVP LINK</em>
+                <a style="text-decoration: underline;" href="{{ rsvp_link }}">
+                    <em>YOUR RSVP LINK</em>
                 </a>
             </p>
             <p>Thank you!</p>
             <hr>
             {% if message %}
-            <p>Message from us:</p>
-            <em>{{ message }}</em>
+            <em>"{{ message }}"</em>
+            <hr>
             {% endif %}
         </div>
-        <hr>
         <ul>
-            <p>Your crew include:</p>
+            <p>Your additional attendees:</p>
             {% for attendee in attendees %}
             {% if attendee %}
             <li>
-                {{ attendee.name }}<br>
+                <em>{{ attendee.name }}</em><br>
             </li>
             {% endif %}
+            {% empty %}
+            <li>
+                <em>You have no additional attendees...looooser!</em><br>
+            </li>
             {% endfor %}
         </ul>
         <div class="footer">
