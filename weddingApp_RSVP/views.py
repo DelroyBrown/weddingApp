@@ -52,13 +52,13 @@ def send_rsvp_email(rsvp):
 
     if rsvp.ceremony and rsvp.after_party:
         invitation_message = "You're invited to our wedding ceremony and after party!"
-        event_location_message = "Everything will be held at: Crowne Plaza, Oxford Road, Beaconsfield, Gerrards Cross, HP9 2XE on June 7th 2025"
+        event_location_message = "Everything will be held at: Crowne Plaza, Oxford Road, Beaconsfield, Gerrards Cross, HP9 2XE on June 7th 2025, 2:30pm. Please arrive for 2pm."
     elif rsvp.ceremony:
         invitation_message = "You're invited to the ceremony of our wedding!"
-        event_location_message = "The ceremony will be held at: Crowne Plaza, Oxford Road, Beaconsfield, Gerrards Cross, HP9 2XE on June 7th 2025"
+        event_location_message = "The ceremony will be held at: Crowne Plaza, Oxford Road, Beaconsfield, Gerrards Cross, HP9 2XE on June 7th 2025, 2:30pm. Please arrive for 2pm."
     elif rsvp.after_party:
         invitation_message = "You're invited to our wedding after party!"
-        event_location_message = "The after party will be held at: Crowne Plaza, Oxford Road, Beaconsfield, Gerrards Cross, HP9 2XE on June 7th 2025"
+        event_location_message = "The after party will be held at: Crowne Plaza, Oxford Road, Beaconsfield, Gerrards Cross, HP9 2XE on June 7th 2025, 7:30pm."
     else:
         invitation_message = (
             "You're invited to our wedding!"

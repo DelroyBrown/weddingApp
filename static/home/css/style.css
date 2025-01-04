@@ -1262,7 +1262,7 @@
 }
  .wpo-shop-sidebar .widget_price_filter #slider-range {
      height: 3px;
-     background: #edf3f8;
+     background: #C1D0B5;
      border: 0;
      border-radius: 50px;
      margin-bottom: 25px;
@@ -3071,7 +3071,7 @@
 }
 /*------------------------------------------- hero style 1 --------------------------------------------*/
  .static-hero {
-     background: #edf3f8;
+     background: #C1D0B5;
      height: 830px;
      display: flex;
      position: relative;
@@ -3267,7 +3267,7 @@
 }
 /*------------------------------------------- static-hero-s2 --------------------------------------------*/
  .static-hero-s2 {
-     background: #edf3f8;
+     background: #C1D0B5;
      height: 900px;
      display: flex;
      justify-content: center;
@@ -3815,7 +3815,7 @@
 }
 /*-------------------------------------------------------------- 4. wpo-footer --------------------------------------------------------------*/
  .wpo-site-footer {
-     background: #edf3f8;
+     background: #C1D0B5;
      position: relative;
      font-size: 15px;
      overflow: hidden;
@@ -4111,7 +4111,7 @@
      padding-bottom: 60px;
 }
  .wpo-service-section .wpo-service-item {
-     background: #edf3f8;
+     background: #C1D0B5;
      padding: 6px;
 }
  .wpo-service-section .wpo-service-item .wpo-service-img {
@@ -4222,7 +4222,7 @@
      width: 100%;
      height: 70%;
      content: "";
-     background-color: #edf3f8;
+     background-color: #C1D0B5;
      z-index: -1;
 }
  @media (min-width: 1600px) {
@@ -4494,7 +4494,7 @@
 }
 /*-------------------------------------------------------------- 3.7 wpo-testimonials-section --------------------------------------------------------------*/
  .wpo-testimonials-section {
-     background: #edf3f8;
+     background: #C1D0B5;
      position: relative;
 }
  .wpo-testimonials-section .wpo-testimonials-shape {
@@ -5168,7 +5168,7 @@
 }
 /* 5.2 wpo-service-section-s2 */
  .wpo-service-section-s2, .wpo-service-section-s3 {
-     background: #edf3f8;
+     background: #C1D0B5;
      padding-bottom: 100px;
 }
  @media (max-width: 1200px) {
@@ -5334,7 +5334,7 @@
      width: 42px;
      height: 42px;
      line-height: 42px;
-     background: #edf3f8;
+     background: #C1D0B5;
      display: block;
      text-align: center;
      border-radius: 50%;
@@ -6036,7 +6036,7 @@
  .wpo-event-section .wpo-event-wrap .wpo-event-item .wpo-event-text {
      padding: 40px 35px;
      text-align: center;
-     background: #edf3f8;
+     background: #C1D0B5;
 }
  @media (max-width: 1200px) {
      .wpo-event-section .wpo-event-wrap .wpo-event-item .wpo-event-text {
@@ -6103,7 +6103,7 @@
 }
 /* 6.8 wpo-partners-section-s3 */
  .wpo-partners-section-s3 {
-     background: #edf3f8;
+     background: #C1D0B5;
 }
 /* 6.9 wpo-blog-section-s2 */
  .wpo-blog-section-s3 {
@@ -9069,7 +9069,7 @@
      width: 60px;
      height: 60px;
      line-height: 60px;
-     border: 2px solid #edf3f8;
+     border: 2px solid #C1D0B5;
      background: #fff;
      color: #86a0b6;
      border-radius: 50%;

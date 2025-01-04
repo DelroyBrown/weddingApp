@@ -69,7 +69,7 @@
         <div class="content">
             <h1 class="persons-name"><em>Hello, {{ family_name }}</em></h1>
             <p class="getting-married-text">Karissa<br>& Delroy<br>Are Getting<br>Married.</p>
-            <p>On Satuday,<br>June 7th. 2025</p>
+
             <p>{{ invitation_message }}</p>
             <p>{{ event_location_message }}</p>
             <p>Please RSVP using the below link:</p>
@@ -95,7 +95,7 @@
             {% endif %}
             {% empty %}
             <li>
-                <em>You have no additional attendees...looooser!</em><br>
+                <em>None</em><br>
             </li>
             {% endfor %}
         </ul>
