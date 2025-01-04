@@ -34,7 +34,7 @@
 }
  body {
      font-family: "Muli";
-     color: #848892;
+     color: #000000e8;
      background-color: #fff;
      font-size: 15px;
      font-size: 1rem;
@@ -47,11 +47,11 @@
 }
  p {
      font-size: 16px;
-     color: #848892;
+     color: #000000e8;
      line-height: 1.8em;
 }
  h1, h2, h3, h4, h5, h6 {
-     color: #002642;
+     color: #000;
      font-family: "Futura PT";
      font-weight: 600;
 }
@@ -1262,7 +1262,7 @@
 }
  .wpo-shop-sidebar .widget_price_filter #slider-range {
      height: 3px;
-     background: #C1D0B5;
+     background: #9EB195;
      border: 0;
      border-radius: 50px;
      margin-bottom: 25px;
@@ -3071,7 +3071,7 @@
 }
 /*------------------------------------------- hero style 1 --------------------------------------------*/
  .static-hero {
-     background: #C1D0B5;
+     background: #9EB195;
      height: 830px;
      display: flex;
      position: relative;
@@ -3267,7 +3267,7 @@
 }
 /*------------------------------------------- static-hero-s2 --------------------------------------------*/
  .static-hero-s2 {
-     background: #C1D0B5;
+     background: #9EB195;
      height: 900px;
      display: flex;
      justify-content: center;
@@ -3696,7 +3696,7 @@
 }
  .static-hero-s3 .wpo-event-item .wpo-event-text ul li a, .static-hero-s4 .wpo-event-item .wpo-event-text ul li a {
      font-weight: 700;
-     color: #8facc2;
+     color: #000;
      position: relative;
      display: inline-block;
      margin-top: 20px;
@@ -3713,7 +3713,7 @@
      width: 100%;
      height: 1px;
      content: "";
-     background: #8facc2;
+     background: #000;
 }
 /*------------------------------------------- wpo-hero-slider-s3 --------------------------------------------*/
  .wpo-hero-slider-s3 .slide-inner .slide-content {
@@ -3815,7 +3815,7 @@
 }
 /*-------------------------------------------------------------- 4. wpo-footer --------------------------------------------------------------*/
  .wpo-site-footer {
-     background: #C1D0B5;
+     background: #9EB195;
      position: relative;
      font-size: 15px;
      overflow: hidden;
@@ -4111,7 +4111,7 @@
      padding-bottom: 60px;
 }
  .wpo-service-section .wpo-service-item {
-     background: #C1D0B5;
+     background: #9EB195;
      padding: 6px;
 }
  .wpo-service-section .wpo-service-item .wpo-service-img {
@@ -4222,7 +4222,7 @@
      width: 100%;
      height: 70%;
      content: "";
-     background-color: #C1D0B5;
+     background-color: #9EB195;
      z-index: -1;
 }
  @media (min-width: 1600px) {
@@ -4494,7 +4494,7 @@
 }
 /*-------------------------------------------------------------- 3.7 wpo-testimonials-section --------------------------------------------------------------*/
  .wpo-testimonials-section {
-     background: #C1D0B5;
+     background: #9EB195;
      position: relative;
 }
  .wpo-testimonials-section .wpo-testimonials-shape {
@@ -5168,7 +5168,7 @@
 }
 /* 5.2 wpo-service-section-s2 */
  .wpo-service-section-s2, .wpo-service-section-s3 {
-     background: #C1D0B5;
+     background: #9EB195;
      padding-bottom: 100px;
 }
  @media (max-width: 1200px) {
@@ -5334,7 +5334,7 @@
      width: 42px;
      height: 42px;
      line-height: 42px;
-     background: #C1D0B5;
+     background: #9EB195;
      display: block;
      text-align: center;
      border-radius: 50%;
@@ -6036,7 +6036,7 @@
  .wpo-event-section .wpo-event-wrap .wpo-event-item .wpo-event-text {
      padding: 40px 35px;
      text-align: center;
-     background: #C1D0B5;
+     background: #9EB195;
 }
  @media (max-width: 1200px) {
      .wpo-event-section .wpo-event-wrap .wpo-event-item .wpo-event-text {
@@ -6063,10 +6063,10 @@
 }
  .wpo-event-section .wpo-event-wrap .wpo-event-item .wpo-event-text ul li a {
      font-weight: 700;
-     color: #8facc2;
+     color: #000;
      position: relative;
      display: inline-block;
-     margin-top: 20px;
+     margin-top: 5px;
 }
  .wpo-event-section .wpo-event-wrap .wpo-event-item .wpo-event-text ul li a:before {
      position: absolute;
@@ -6075,7 +6075,7 @@
      width: 100%;
      height: 1px;
      content: "";
-     background: #8facc2;
+     background: #000;
 }
  .wpo-event-section .wpo-event-wrap .wpo-event-item .event-shape-1 {
      position: absolute;
@@ -6103,7 +6103,7 @@
 }
 /* 6.8 wpo-partners-section-s3 */
  .wpo-partners-section-s3 {
-     background: #C1D0B5;
+     background: #9EB195;
 }
 /* 6.9 wpo-blog-section-s2 */
  .wpo-blog-section-s3 {
@@ -8541,7 +8541,7 @@
 }
  .wpo-portfolio-single-section .wpo-portfolio-single-content-des ul li span {
      flex-basis: 70%;
-     color: #848892;
+     color: #000000e8;
      font-weight: 400;
      margin-bottom: 0;
 }
@@ -9069,7 +9069,7 @@
      width: 60px;
      height: 60px;
      line-height: 60px;
-     border: 2px solid #C1D0B5;
+     border: 2px solid #9EB195;
      background: #fff;
      color: #86a0b6;
      border-radius: 50%;
