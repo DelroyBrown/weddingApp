@@ -47,7 +47,7 @@ def generate_unique_token(family_name):
 
 
 def send_rsvp_email(rsvp):
-    rsvp_link = f"https://kadel2025.co.uk/rsvp/{rsvp.token}/"
+    rsvp_link = f"https://www.kadel2025.co.uk/rsvp/{rsvp.token}/"
     subject = "You're invited to our wedding"
 
     if rsvp.ceremony and rsvp.after_party:
