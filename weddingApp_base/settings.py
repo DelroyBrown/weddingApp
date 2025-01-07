@@ -14,7 +14,7 @@ DEBUG = 'DEVELOPMENT' in os.environ
 
 DEBUG = os.getenv("DEBUG")
 
-ALLOWED_HOSTS = ['kadel-6d5f7df9f1e4.herokuapp.com', '127.0.0.1']
+ALLOWED_HOSTS = ['kadel-6d5f7df9f1e4.herokuapp.com', '127.0.0.1', 'www.kadel2025.co.uk']
 
 
 INSTALLED_APPS = [
