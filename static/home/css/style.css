@@ -4015,7 +4015,7 @@
      padding-bottom: 15px;
      position: relative;
      padding-left: 35px;
-     color: #5880a2;
+     color: #9EB195;
      font-size: 16px;
 }
  .wpo-site-footer .contact-ft ul li i {
@@ -4041,10 +4041,10 @@
      font-size: 15px;
      font-size: 0.9375rem;
      margin: 0;
-     color: #5880a2;
+     color: #9EB195;
 }
  .wpo-site-footer .wpo-lower-footer .copyright a {
-     color: #5880a2;
+     color: #9EB195;
      text-decoration: none;
 }
  @media (max-width: 991px) {
@@ -5439,7 +5439,7 @@
      font-size: 3.6rem;
      line-height: 1em;
      padding-top: 15px;
-     color: #5880a2;
+     color: #9EB195;
 }
  @media (max-width: 1200px) {
      .wpo-wedding-date #clock .time {
@@ -5909,7 +5909,7 @@
      font-weight: 500;
      display: block;
      margin-bottom: 15px;
-     color: #8ab1d2;
+     color: #9EB195;
 }
  .story-section .story-timeline p {
      margin-bottom: 0;
@@ -6029,14 +6029,14 @@
 }
  .wpo-event-section .wpo-event-wrap .wpo-event-item {
      padding: 20px;
-     border: 2px solid #b0c7d9;
+     border: 2px solid #9EB195;
      position: relative;
      margin-bottom: 40px;
 }
  .wpo-event-section .wpo-event-wrap .wpo-event-item .wpo-event-text {
      padding: 40px 35px;
      text-align: center;
-     background: #9EB195;
+     /* background: #9EB195; */
 }
  @media (max-width: 1200px) {
      .wpo-event-section .wpo-event-wrap .wpo-event-item .wpo-event-text {
@@ -8502,7 +8502,7 @@
     }
 }
  .wpo-portfolio-single-section .portfolio-single-text span {
-     color: #5880a2;
+     color: #9EB195;
      display: block;
      margin-bottom: 30px;
 }
