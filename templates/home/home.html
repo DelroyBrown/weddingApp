@@ -5,7 +5,7 @@
 
 <style>
     .wpo-wedding-date #clock>div {
-        background: url("{% static 'images/clock-bg-g.png' %}") center center/cover no-repeat local;
+        /* background: url("{% static 'images/clock-bg-g.png' %}") center center/cover no-repeat local; */
     }
 </style>
 
@@ -111,7 +111,7 @@
                     </div> <!-- end slide-inner -->
                 </div> <!-- end swiper-slide -->
 
-             
+
             </div>
             <!-- end swiper-wrapper -->
 
@@ -122,20 +122,107 @@
         </div>
     </section>
     <!-- end of wpo-hero-slide-section-->
-    <!-- start wpo-wedding-date -->
-    <!-- <section class="wpo-wedding-date section-padding">
-        <h2 class="hidden"></h2>
+
+    <!-- Link to Wedding Gift Page -->
+    <section class="wpo-event-section section-padding" id="event">
         <div class="container">
-            <div class="row">
-                <div class="col col-xs-12">
-                    <div class="clock-grids">
-                        <div id="clock"></div>
+
+            <div class="wpo-event-wrap">
+                <div class="row">
+                    <div class="col col-lg-12 col-md-12 col-12">
+                        <div class="wpo-event-item">
+                            <div class="wpo-event-text">
+                                <h2></h2>
+                                <!-- CROWNE PLAZA -->
+                                <ul>
+                                    <li>
+                                        <strong>WEDDING REGISTRY</strong><br>
+                                        <p>
+                                            Your presence at our wedding is the greatest gift. If you’d like to give
+                                            something extra,<br>contributions from our registry or toward our honeymoon
+                                            fund would be greatly appreciated.<br>Just click the link below to contribute.
+                                            Thank you!
+
+                                        </p>
+
+                                        <p style="font-style: italic;">
+                                           <a href="https://prezola.com/buy/view/235258" target="_blank">https://prezola.com/buy/view/235258</a>
+                                        </p>
+
+
+
+
+
+                                    </li>
+
+                                </ul>
+                                <h2></h2>
+
+
+                            </div>
+                        
+                        </div>
                     </div>
-                
+
+
+                    <!-- <div class="col col-lg-4 col-md-6 col-12">
+                        <div class="wpo-event-item">
+                            <div class="wpo-event-text">
+                                <h2>The Wedding</h2>
+                                <ul>
+                                    <li>Tuesday, June 7th, 2025
+                                        2:30PM</li>
+                                    <li>Grand Plaza, Oxford Rd, Beaconsfield HP9 2XE</li>
+                                    <li>Phone : 07794 510196</li>
+
+                                    <li> <a class="popup-gmaps"
+                                            href="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2965.834739194974!2d-0.5999030230961311!3d51.595334804275225!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x487665e0b3c38bb3%3A0xa10bb1543547bb73!2sCrowne%20Plaza%20Gerrards%20Cross%2C%20an%20IHG%20Hotel!5e1!3m2!1sen!2suk!4v1724676486219!5m2!1sen!2suk" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" target="_blank">See
+                                            Location</a></li>
+                                </ul>
+                            </div>
+                            <div class="event-shape-1">
+                                <img src="{% static 'images/event-shape-1.png' %}" alt="">
+                            </div>
+                            <div class="event-shape-2">
+                                <img src="{% static 'images/event-shape-2.png' %}" alt="">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col col-lg-4 col-md-6 col-12">
+                        <div class="wpo-event-item">
+                            <div class="wpo-event-text">
+                                <h2>The Party</h2>
+                                <ul>
+                                    <li>Tuesday, June 7th, 2025
+                                        2:30PM</li>
+                                    <li>Grand Plaza, Oxford Rd, Beaconsfield HP9 2XE</li>
+                                    <li>Phone : 07794 510196</li>
+
+                                    <li> <a class="popup-gmaps"
+                                            href="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2965.834739194974!2d-0.5999030230961311!3d51.595334804275225!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x487665e0b3c38bb3%3A0xa10bb1543547bb73!2sCrowne%20Plaza%20Gerrards%20Cross%2C%20an%20IHG%20Hotel!5e1!3m2!1sen!2suk!4v1724676486219!5m2!1sen!2suk" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" target="_blank">See
+                                            Location</a></li>
+                                </ul>
+                            </div>
+                            <div class="event-shape-1">
+                                <img src="{% static 'images/event-shape-1.png' %}" alt="">
+                            </div>
+                            <div class="event-shape-2">
+                                <img src="{% static 'images/event-shape-2.png' %}" alt="">
+                            </div>
+                        </div>
+                    </div> -->
+
                 </div>
             </div>
+
         </div> <!-- end container -->
-    </section> -->
+    </section>
+
+    <!-- Include Countdown Timer Here -->
+
+
+
+    <!-- </div> end container -->
     <!-- start wpo-event-section -->
     <section class="wpo-event-section section-padding" id="event">
         <div class="container">
@@ -586,5 +673,6 @@
 
 </div>
 <!-- end of page-wrapper -->
+
 
 {% endblock %}

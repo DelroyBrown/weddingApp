@@ -12,4 +12,5 @@ urlpatterns = [
     path("admin/", admin.site.urls),
     path("rsvp/", include("weddingApp_RSVP.urls", namespace="weddingApp_RSVP")),
     path('', include('weddingApp_home.urls')),
+    path('gallery/', include('weddingApp_gallery.urls')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

@@ -4100,7 +4100,8 @@
 }
  .wpo-partners-section .grid img, .wpo-partners-section-s2 .grid img, .wpo-partners-section-s3 .grid img {
      width: auto;
-     margin: 0 auto;
+     /* margin: 0 auto; */
+     margin-top: 100px;
      display: inline-block;
 }
  .wpo-partners-section .owl-nav, .wpo-partners-section-s2 .owl-nav, .wpo-partners-section-s3 .owl-nav {

@@ -26,6 +26,7 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     "weddingApp_RSVP",
     "weddingApp_home",
+    "weddingApp_gallery",
 ]
 
 MIDDLEWARE = [
