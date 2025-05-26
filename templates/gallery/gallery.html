@@ -27,33 +27,25 @@
         <!-- end preloader -->
 
         <!-- NAVIGATION -->
-        {% include 'commons/nav.html' %}
+        {% include 'commons/gallery_nav.html' %}
         <!-- start wpo-page-title -->
-        <section class="wpo-page-title">
-            <div class="container">
-                <div class="row">
-                    <div class="col col-xs-12">
-                        <div class="wpo-breadcumb-wrap">
-                            <h2>Gallery</h2>
-                            <p class="text-white">
-                                Pop in your name, upload your pics, and watch the day’s best moments come alive.<br>Thanks for being part of our day!
-
-                            </p>
-                            <ol class="wpo-breadcumb-wrap">
-                                <li><a href="/">Home</a></li>
-                                <li>Gallery</li>
-                            </ol>
-                        </div>
-                    </div>
-                </div> <!-- end row -->
-            </div> <!-- end container -->
+        <section style="background-color: #9EB195;">
+            <div class="px-4 py-5 mb-5 text-center">
+                <h1 class="display-5 fw-bold text-white">Share your memories!</h1>
+                <div class="col-lg-6 mx-auto">
+                    <p class="lead mb-4 text-white">Enter your name, upload your best snaps from the day, and let’s relive the
+                        highlights—thanks for spending the day with us!
+                        .</p>
+            
+                </div>
+            </div>
         </section>
         <!-- end page-title -->
         <!-- start wpo-portfolio-section -->
         <section class="wpo-portfolio-section-s3 tb-padding section-padding">
 
             <div class="container">
-                <div class="wpo-contact-form-area">
+                <div class="wpo-contact-form-area" style="margin-bottom: 100px;">
                     <form method="post" enctype="multipart/form-data">
                         {% csrf_token %}
 
@@ -88,8 +80,8 @@
                         </div>
 
                         <!-- Submit -->
-                        <div class="mt-5 form-group">
-                            <button type="submit" class="btn btn-lg btn-block" style="background-color: #9EB195;">
+                        <div class="mt-5 form-group row">
+                            <button type="submit" class="btn btn-lg btn-block text-white" style="background-color: #9EB195;">
                                 Upload
                             </button>
                         </div>
@@ -131,7 +123,7 @@
                                     {% endif %}
                                 </div>
                                 {% empty %}
-                                <p>No photos yet—be the first to upload!</p>
+                                <p class="text-center">No photos yet—be the first to upload!</p>
                                 {% endfor %}
 
                                 <div class="grid">
