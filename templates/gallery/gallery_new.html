@@ -1,0 +1,70 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Wedding Photo Gallery</title>
+  <link rel="stylesheet" href="{% static 'css/gallery.css' %}">
+</head>
+<body>
+  <h1>Our Wedding Gallery</h1>
+
+  <!-- Upload Form -->
+  <section id="upload">
+    <h2>Share Your Photo</h2>
+    <form method="post" enctype="multipart/form-data">
+      {% csrf_token %}
+      {{ form.non_field_errors }}
+      <p>
+        {{ form.attendee.label_tag }}<br>
+        {{ form.attendee }}<br>
+        {{ form.attendee.help_text }}
+      </p>
+      <p>
+        {{ form.image.label_tag }}<br>
+        {{ form.image }}<br>
+        {{ form.image.help_text }}
+      </p>
+      <button type="submit">Upload</button>
+    </form>
+  </section>
+
+  <!-- Gallery Grid -->
+  <section id="photos">
+    <h2>All Photos</h2>
+    <div id="photoGrid">
+      {% for photo in photos %}
+        <figure class="photo-item">
+          <img src="{{ photo.image.url }}" alt="{{ photo.attendee.name }}">
+          <figcaption>{{ photo.attendee.name }}</figcaption>
+        </figure>
+      {% empty %}
+        <p>No photos yet—be the first to upload!</p>
+      {% endfor %}
+    </div>
+  </section>
+
+  <!-- Auto-refresh every 15 s -->
+  <script>
+    setInterval(()=>{
+      fetch(window.location.pathname + '?ajax=1')
+        .then(res => res.json())
+        .then(data => {
+          const grid = document.getElementById('photoGrid');
+          grid.innerHTML = '';
+          data.photos.forEach(item => {
+            const fig = document.createElement('figure');
+            fig.className = 'photo-item';
+            const img = document.createElement('img');
+            img.src = item.url; img.loading = 'lazy';
+            img.alt = item.uploader;
+            const cap = document.createElement('figcaption');
+            cap.textContent = item.uploader;
+            fig.append(img, cap);
+            grid.appendChild(fig);
+          });
+        });
+    }, 15000);
+  </script>
+</body>
+</html>
