@@ -55,9 +55,8 @@
 
                         <!-- Name (required) -->
                         <div class="form-group">
-                            <label for="id_name" class="form-label">Your Name</label>
                             <input type="text" name="name" id="id_name" required maxlength="100"
-                                placeholder="e.g. John Smith"
+                                placeholder="Your full name..."
                                 class="form-control form-control-lg"
                                 value="{{ form.name.value|default:'' }}" />
                             {% if form.name.errors %}
@@ -67,7 +66,6 @@
 
                         <!-- Message (optional) -->
                         <div class="form-group mt-4">
-                            <label for="id_message" class="form-label">Message</label>
                             <textarea name="message" id="id_message" rows="2" maxlength="255"
                                 placeholder="Optional short message..."
                                 class="form-control form-control-lg">{{ form.message.value|default:'' }}</textarea>
