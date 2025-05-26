@@ -50,21 +50,70 @@
 
             <div class="container">
                 <div class="wpo-contact-form-area">
-                    <form method="post" enctype="multipart/form-data">
-                        {% csrf_token %}
-                        {{ form.non_field_errors }}
-                        <p>
-                            {{ form.attendee.label_tag }}<br>
-                            {{ form.attendee }}<br>
-                            {{ form.attendee.help_text }}
-                        </p>
-                        <p>
-                            {{ form.image.label_tag }}<br>
-                            {{ form.image }}<br>
-                            {{ form.image.help_text }}
-                        </p>
-                        <button type="submit">Upload</button>
+                    <form method="post" enctype="multipart/form-data" class="your-form-container-class">
+                        <!-- CSRF Token -->
+                        <input type="hidden" name="csrfmiddlewaretoken"
+                        value="{{ csrf_token }}"/>
+
+                        <!-- Non-field errors -->
+                        {% if form.non_field_errors %}
+                        <div class="error-messages your-error-class">
+                            {{ form.non_field_errors }}
+                        </div>
+                        {% endif %}
+
+                        <!-- Attendee selector -->
+                        <div class="form-group your-attendee-group-class">
+                            <label for="id_attendee" class="form-label">
+                                {{ form.attendee.label }}
+                            </label>
+                            <select name="attendee" id="id_attendee"
+                                class="form-control">
+                                <option value="">{{ form.fields.attendee.empty_label }}</option>
+                                {% for person in form.fields.attendee.queryset %}
+                                <option value="{{ person.pk }}" {% if
+                                    form.attendee.value|stringformat:"s"==person.pk|stringformat:"s" %}selected{% endif
+                                    %}>
+                                    {{ person.name }}
+                                </option>
+                                {% endfor %}
+                            </select>
+                            {% if form.attendee.help_text %}
+                            <p class="form-label">
+                                {{ form.attendee.help_text }}
+                            </p>
+                            {% endif %}
+                            {% if form.attendee.errors %}
+                            <div class="mt-1 text-sm text-red-600 your-field-error-class">
+                                {{ form.attendee.errors }}
+                            </div>
+                            {% endif %}
+                        </div>
+
+                        <!-- Image upload -->
+                        <div class="form-group your-image-group-class">
+                          
+                            <input type="file" name="image" id="id_image" accept="image/jpeg,image/png" class="form-control" />
+                            {% if form.image.help_text %}
+                            <p class="mt-2 text-sm text-gray-500 your-helptext-class">
+                                {{ form.image.help_text }}
+                            </p>
+                            {% endif %}
+                            {% if form.image.errors %}
+                            <div class="mt-1 text-sm text-red-600 your-field-error-class">
+                                {{ form.image.errors }}
+                            </div>
+                            {% endif %}
+                        </div>
+
+                        <!-- Submit button -->
+                        <div class="your-button-group-class">
+                            <button type="submit" class="btn btn-primary">
+                                Upload
+                            </button>
+                        </div>
                     </form>
+
                 </div>
                 <div class="row">
                     <div class="wpo-section-title-s2">
