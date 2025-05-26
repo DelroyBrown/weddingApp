@@ -50,69 +50,51 @@
 
             <div class="container">
                 <div class="wpo-contact-form-area">
-                    <form method="post" enctype="multipart/form-data" class="your-form-container-class">
-                        <!-- CSRF Token -->
-                        <input type="hidden" name="csrfmiddlewaretoken"
-                        value="{{ csrf_token }}"/>
+                    <form method="post" enctype="multipart/form-data">
+                        {% csrf_token %}
 
-                        <!-- Non-field errors -->
-                        {% if form.non_field_errors %}
-                        <div class="error-messages your-error-class">
-                            {{ form.non_field_errors }}
-                        </div>
-                        {% endif %}
-
-                        <!-- Attendee selector -->
-                        <div class="form-group your-attendee-group-class">
-                            <label for="id_attendee" class="form-label">
-                                {{ form.attendee.label }}
-                            </label>
-                            <select name="attendee" id="id_attendee"
-                                class="form-control">
-                                <option value="">{{ form.fields.attendee.empty_label }}</option>
-                                {% for person in form.fields.attendee.queryset %}
-                                <option value="{{ person.pk }}" {% if
-                                    form.attendee.value|stringformat:"s"==person.pk|stringformat:"s" %}selected{% endif
-                                    %}>
-                                    {{ person.name }}
-                                </option>
-                                {% endfor %}
-                            </select>
-                            {% if form.attendee.help_text %}
-                            <p class="form-label">
-                                {{ form.attendee.help_text }}
-                            </p>
-                            {% endif %}
-                            {% if form.attendee.errors %}
-                            <div class="mt-1 text-sm text-red-600 your-field-error-class">
-                                {{ form.attendee.errors }}
-                            </div>
+                        <!-- Name (required) -->
+                        <div class="form-group">
+                            <label for="id_name" class="form-label">Your Name</label>
+                            <input type="text" name="name" id="id_name" required maxlength="100"
+                                placeholder="e.g. John Smith"
+                                class="form-control form-control-lg"
+                                value="{{ form.name.value|default:'' }}" />
+                            {% if form.name.errors %}
+                            <p class="text-red-600 text-sm">{{ form.name.errors.0 }}</p>
                             {% endif %}
                         </div>
 
-                        <!-- Image upload -->
-                        <div class="form-group your-image-group-class">
-                          
-                            <input type="file" name="image" id="id_image" accept="image/jpeg,image/png" class="form-control" />
-                            {% if form.image.help_text %}
-                            <p class="mt-2 text-sm text-gray-500 your-helptext-class">
-                                {{ form.image.help_text }}
-                            </p>
+                        <!-- Message (optional) -->
+                        <div class="form-group mt-4">
+                            <label for="id_message" class="form-label">Message</label>
+                            <textarea name="message" id="id_message" rows="2" maxlength="255"
+                                placeholder="Optional short message..."
+                                class="form-control form-control-lg">{{ form.message.value|default:'' }}</textarea>
+                            {% if form.message.errors %}
+                            <p class="text-red-600 text-sm">{{ form.message.errors.0 }}</p>
                             {% endif %}
+                        </div>
+
+                        <!-- Image file -->
+                        <div class="form-group mt-4">
+                            <label for="id_image" class="form-label">Upload Photo</label>
+                            <input type="file" name="image" id="id_image" accept="image/jpeg,image/png" required
+                                class="form-control form-control-lg" />
                             {% if form.image.errors %}
-                            <div class="mt-1 text-sm text-red-600 your-field-error-class">
-                                {{ form.image.errors }}
-                            </div>
+                            <p class="text-red-600 text-sm">{{ form.image.errors.0 }}</p>
                             {% endif %}
                         </div>
 
-                        <!-- Submit button -->
-                        <div class="your-button-group-class">
-                            <button type="submit" class="btn btn-primary">
+                        <!-- Submit -->
+                        <div class="mt-6">
+                            <button type="submit"
+                                class="btn btn-primary">
                                 Upload
                             </button>
                         </div>
                     </form>
+
 
                 </div>
                 <div class="row">
@@ -142,8 +124,11 @@
                                         </a>
                                     </div>
                                     <figcaption>Uploaded by:
-                                        <strong>{{ photo.attendee.name }}</strong>
+                                        <strong>{{ photo.name }}</strong>
                                     </figcaption>
+                                    {% if photo.message %}
+                                    <p>{{ photo.message }}</p>
+                                    {% endif %}
                                 </div>
                                 {% empty %}
                                 <p>No photos yet—be the first to upload!</p>

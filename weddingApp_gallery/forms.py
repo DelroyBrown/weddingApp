@@ -1,34 +1,35 @@
-# weddingApp_gallery/forms.py
 from django import forms
 from .models import Photo
-from weddingApp_RSVP.models import Attendee
 
 
 class PhotoUploadForm(forms.ModelForm):
-    attendee = forms.ModelChoiceField(
-        queryset=Attendee.objects.none(),  # placeholder
-        empty_label="-- Select your RSVP & name --",
-        label="Your RSVP & Name",
-        help_text="If you don’t see your family or name, you can’t upload.",
+    name = forms.CharField(
+        label="Your Name",
+        max_length=100,
+        required=True,
+        widget=forms.TextInput(
+            attrs={
+                "placeholder": "e.g. John Smith",
+            }
+        ),
+    )
+    message = forms.CharField(
+        label="Message",
+        max_length=255,
+        required=False,
+        widget=forms.Textarea(
+            attrs={"rows": 2, "placeholder": "Optional short message..."}
+        ),
     )
 
     class Meta:
         model = Photo
-        fields = ["attendee", "image"]
-
-    def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)
-        qs = Attendee.objects.select_related("rsvp").order_by(
-            "rsvp__family_name", "name"
-        )
-        field = self.fields["attendee"]
-        field.queryset = qs
-        field.label_from_instance = lambda obj: f"{obj.rsvp.family_name} – {obj.name}"
+        fields = ["name", "message", "image"]
 
     def clean_image(self):
         img = self.cleaned_data["image"]
         if img.size > 12 * 1024 * 1024:
-            raise forms.ValidationError("Image file too large (max 12 MB).")
+            raise forms.ValidationError("Image file too large (max 5 MB).")
         if img.content_type not in ("image/jpeg", "image/png"):
-            raise forms.ValidationError("Only JPEG and PNG files are allowed.")
+            raise forms.ValidationError("Only JPEG & PNG allowed.")
         return img
